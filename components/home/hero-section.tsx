@@ -1,35 +1,47 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const slides = [
   {
-    image: '/images/hero-model-1.jpeg',
-    alt: 'Acid wash hoodie',
+    image: "/images/hero-model-1.jpeg",
+    alt: "Acid wash hoodie",
   },
   {
-    image: '/images/hero-model-2.jpeg',
-    alt: 'Black hoodie',
+    image: "/images/hero-model-2.jpeg",
+    alt: "Black hoodie",
   },
-]
+];
 
 export function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    return () => clearInterval(timer)
-  }, [])
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
+      {/* BANDEAU MODE TEST - Ajout ici */}
+      <div className="absolute top-20 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-yellow-500/50 text-yellow-500 px-4 py-2 rounded-full text-xs font-medium tracking-wide shadow-xl pointer-events-auto"
+        >
+          <Info className="w-4 h-4" />
+          <span>MODE DÉMO : Aucun paiement réel ne sera prélevé.</span>
+        </motion.div>
+      </div>
+
       {/* Background Images */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -112,13 +124,13 @@ export function HeroSection() {
               onClick={() => setCurrentSlide(i)}
               className={`h-1 transition-all duration-300 ${
                 i === currentSlide
-                  ? 'w-10 bg-primary'
-                  : 'w-6 bg-white/40 hover:bg-white/60'
+                  ? "w-10 bg-primary"
+                  : "w-6 bg-white/40 hover:bg-white/60"
               }`}
             />
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
