@@ -1,19 +1,20 @@
 ## 📁 Structure du Projet
 
 ```
-src/
-├── core/               # Logique métier
-│ ├── domain/           # Entités et interfaces
-│ │ ├── entities/       # Ex: User.ts
-│ │ └── repositories/   # Ex: IUserRepository.ts
-│ └── use-cases/        # Logique applicative (Ex: LoginUser.ts)
-├── infrastructure/     # Implémentations concrètes
-│ ├── adapters/         # Ex: AxiosAdapter.ts, PrismaAdapter.ts
-│ └── repositories/     # Ex: ApiUserRepository.ts
-└── presentation/       # Next.js
-├── components/         # Composants UI
-├── hooks/              # Hooks pour lier Use Cases et UI
-└── app/                # App Router
+.
+└── src/
+    ├── app/                      # Routage et pages Next.js
+    │   ├── (auth)                # Routes authentification
+    │   ├── api/                  # Routes API
+    ├── application/              # Logique métier
+    │   └── use-cases/            # Cas d'usage
+    ├── components/               # Composants réutilisables
+    ├── domain/                   # Entités et interfaces
+    │   ├── entities/             # Modèles de données
+    │   └── repositories/         # Interfaces des repositories
+    ├── hooks/                    # Hooks personnalisés
+    └── infrastructure/           # Implémentations concrètes
+        └── repositories/         # Implementations des repositories
 
 
 ```
