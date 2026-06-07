@@ -4,7 +4,15 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Minus, Plus, ShoppingCart, CreditCard, Trash2 } from "lucide-react";
+import {
+  X,
+  Minus,
+  Plus,
+  ShoppingCart,
+  CreditCard,
+  Trash2,
+  Info,
+} from "lucide-react";
 import { useCart } from "./cart-provider";
 import { formatPrice } from "@/lib/catalog/utils";
 import { Button } from "@/src/components/ui/button";
@@ -316,6 +324,37 @@ export function CartDrawer() {
                   exit={{ opacity: 0, y: 20 }}
                   className="p-6 border-t border-border space-y-4 bg-card"
                 >
+                  {/* BLOC INFO CARTE DE TEST - AJOUTÉ */}
+                  <div className="mt-6 p-4 bg-secondary/50 border border-border rounded-xl space-y-3">
+                    <div className="flex items-center gap-2 text-primary">
+                      <Info className="w-4 h-4" />
+                      <span className="text-xs font-bold uppercase tracking-wider">
+                        Test Credentials
+                      </span>
+                    </div>
+
+                    <div className="space-y-2">
+                      {/* Cas Succès */}
+                      <div className="flex justify-between items-center bg-background/50 p-2 rounded border border-emerald-500/20">
+                        <span className="text-[10px] text-emerald-500 font-medium">
+                          ACCEPTÉ
+                        </span>
+                        <code className="text-xs font-mono">4242...4242</code>
+                      </div>
+
+                      {/* Cas Refusé */}
+                      <div className="flex justify-between items-center bg-background/50 p-2 rounded border border-destructive/20">
+                        <span className="text-[10px] text-destructive font-medium">
+                          REFUSÉ
+                        </span>
+                        <code className="text-xs font-mono">4000...0002</code>
+                      </div>
+                    </div>
+
+                    <p className="text-[9px] text-muted-foreground text-center italic">
+                      Expire: 12/34 • CVC: 123
+                    </p>
+                  </div>
                   <div className="flex items-center justify-between">
                     <span className="text-muted-foreground">Subtotal</span>
                     <span className="text-xl font-semibold text-foreground">

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 
 const slides = [
@@ -30,6 +30,18 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
+      {/* BANDEAU MODE TEST - Ajout ici */}
+      <div className="absolute top-20 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-yellow-500/50 text-yellow-500 px-4 py-2 rounded-full text-xs font-medium tracking-wide shadow-xl pointer-events-auto"
+        >
+          <Info className="w-4 h-4" />
+          <span>MODE DÉMO : Aucun paiement réel ne sera prélevé.</span>
+        </motion.div>
+      </div>
+
       {/* Background Images */}
       <AnimatePresence mode="wait">
         <motion.div
